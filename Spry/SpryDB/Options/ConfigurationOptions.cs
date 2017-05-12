@@ -1,4 +1,7 @@
-﻿using CommandLine;
+﻿using System;
+using CommandLine;
+using CommandLine.Text;
+using System.Reflection;
 
 namespace SpryDB.Options
 {
@@ -17,7 +20,52 @@ namespace SpryDB.Options
 
         public int RunConfigurationAndReturnExitCode(ConfigurationOptions opts)
         {
+            
+            if (opts.setConfig)
+                SaveNewConfigration();
+
+            if (opts.listConfig)
+                ListConfigration();
+
+            if (opts.testConfig)
+                TestConfigration();
+
+            if(isNoArgument(opts))
+                Parser.Default.ParseArguments<ConfigurationOptions>(new string[] { "verb", "--help" });
+
+
             return 0;
         }
+
+        private void TestConfigration()
+        {
+            Console.WriteLine("Test configration");            
+        }
+
+        private void ListConfigration()
+        {
+            Console.WriteLine("List configration");
+        }
+
+        private void SaveNewConfigration()
+        {
+            Console.WriteLine("New configration");
+           
+        }
+
+        private bool isNoArgument(ConfigurationOptions opts)
+        {
+
+            foreach (PropertyInfo pi in opts.GetType().GetProperties())
+            {
+                bool value = (bool)pi.GetValue(opts);
+                if (value)
+                    return false;
+            }
+                return true;
+        }
+        
+      
+
     }
 }
