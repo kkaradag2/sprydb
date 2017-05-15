@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\settings.cs" />
     <Compile Include="Options\BaselineOptions.cs" />
     <Compile Include="Options\CleanOptions.cs" />
     <Compile Include="Options\ConfigurationOptions.cs" />

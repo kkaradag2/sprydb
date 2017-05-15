@@ -18,19 +18,19 @@ namespace SpryDB.Options
         [Option('t', "test-config", HelpText = "Test your current configration.")]
         public bool testConfig { get; set; }
 
-        public int RunConfigurationAndReturnExitCode(ConfigurationOptions opts)
+        public int RunConfigurationAndReturnExitCode()
         {
             
-            if (opts.setConfig)
+            if (this.setConfig)
                 SaveNewConfigration();
 
-            if (opts.listConfig)
+            if (this.listConfig)
                 ListConfigration();
 
-            if (opts.testConfig)
+            if (this.testConfig)
                 TestConfigration();
 
-            if(isNoArgument(opts))
+            if(isNoArgument()) // Run help if no argument is input for configuration command.
                 Parser.Default.ParseArguments<ConfigurationOptions>(new string[] { "verb", "--help" });
 
 
@@ -49,16 +49,27 @@ namespace SpryDB.Options
 
         private void SaveNewConfigration()
         {
-            Console.WriteLine("New configration");
-           
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+            Console.WriteLine("Pleace select your database server type:");
+            Console.WriteLine("");
+            Console.WriteLine("1. MS-SQL Server");
+            Console.WriteLine("2. MYSQL");
+            Console.WriteLine("3. ORACLE");
+            Console.WriteLine("4. Exit configuration");
+            Console.ResetColor();
+
+
+
         }
+        
 
-        private bool isNoArgument(ConfigurationOptions opts)
-        {
+        private bool isNoArgument()
+        {           
 
-            foreach (PropertyInfo pi in opts.GetType().GetProperties())
+            foreach (PropertyInfo pi in this.GetType().GetProperties())
             {
-                bool value = (bool)pi.GetValue(opts);
+                bool value = (bool)pi.GetValue(this);
                 if (value)
                     return false;
             }
