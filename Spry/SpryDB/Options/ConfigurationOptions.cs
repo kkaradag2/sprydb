@@ -2,6 +2,10 @@
 using CommandLine;
 using CommandLine.Text;
 using System.Reflection;
+using System.Drawing;
+using Console = Colorful.Console;
+using System.Text.RegularExpressions;
+using SpryDB.Models;
 
 namespace SpryDB.Options
 {
@@ -49,18 +53,79 @@ namespace SpryDB.Options
 
         private void SaveNewConfigration()
         {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            var setting = new settings();
 
-            Console.WriteLine("Pleace select your database server type:");
             Console.WriteLine("");
-            Console.WriteLine("1. MS-SQL Server");
-            Console.WriteLine("2. MYSQL");
-            Console.WriteLine("3. ORACLE");
-            Console.WriteLine("4. Exit configuration");
-            Console.ResetColor();
+            Console.WriteLine("Pleace select your database server:",Color.White);
+            Console.WriteLine("");
+            Console.WriteLine("[1] MS SQL server", Color.White);
+            Console.WriteLine("[2] ORACLE server", Color.White);
+            Console.WriteLine("[3] MYSQL server", Color.White);
+            Console.WriteLine("[0] Exit", Color.White);
+            Console.WriteLine("");
+            Console.WriteLine("------------------------------------",Color.White);
+            Console.Write("Please enter a value between 0 and 3: ", Color.DarkGreen);
+
+            Regex regexMenu = new Regex(@"([0-4])");            
+            string menu = Console.ReadLine();
+            
+            while (!regexMenu.IsMatch(menu))
+            {
+                Console.WriteLine("Bad input", Color.Red);
+                Console.Write("Please enter a value between 0 and 3: ", Color.DarkGreen);
+                menu = Console.ReadLine();
+            }
 
 
 
+
+
+            Regex folder = new Regex(@"^(?:[a-zA-Z]\:|\\\\[\w\.]+\\[\w.$]+)\\(?:[\w]+\\)*\w([\w.])+$");  // Folder regex  c:\sql\working
+            Regex share = new Regex(@"^(\\)(\\[A-Za-z0-9-_]+){2,}(\\?)$");
+          
+            
+
+
+
+
+            string connectionstring = string.Empty;
+            string workingdirectory = string.Empty;
+
+            //try
+            //{
+                
+            //    opcao = int.Parse(Console.ReadLine());
+            //    switch (opcao)
+            //    {
+            //        case 1:     // MS SQL Server
+            //            setting.Server = settings.ServerTypes.MSSQL;
+            //            break;
+            //        case 2:     // ORACLE Server
+            //            setting.Server = settings.ServerTypes.ORACLE;
+            //            break;
+            //        case 3:     // MYSQL Server
+            //            setting.Server = settings.ServerTypes.MYSQL;
+            //            break;
+            //        case 0:
+            //            Environment.Exit(0);
+            //            break;
+            //        default:
+            //            throw new Exception("Pleace select 0-3 arange");
+            //            break;
+            //    }
+
+            //    Regex folder = new Regex(@"^(?:[a-zA-Z]\:|\\\\[\w\.]+\\[\w.$]+)\\(?:[\w]+\\)*\w([\w.])+$");  // Folder regex  c:\sql\working
+            //    Regex share = new Regex(@"^(\\)(\\[A-Za-z0-9-_]+){2,}(\\?)$");
+
+             
+            //}
+            //catch (Exception exp)
+            //{
+            //    Console.WriteLine(exp.Message, Color.Red);
+            //    Console.WriteLine("-------------------------------------", Color.White);
+            //    SaveNewConfigration();
+            //}
+            
         }
         
 
@@ -80,3 +145,4 @@ namespace SpryDB.Options
 
     }
 }
+
