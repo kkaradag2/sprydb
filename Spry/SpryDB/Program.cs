@@ -13,10 +13,10 @@ namespace SpryDB
                (BaselineOptions      opts) => opts.RunBaselineReturnExitCode(opts),
                (CleanOptions         opts) => opts.RunCleanAndReturnExitCode(opts),
                (ConfigurationOptions opts) => opts.RunConfigurationAndReturnExitCode(),
-               (InfoOptions          opts) => opts.RunInfoAndReturnExitCode(opts),
+               (InfoOptions          opts) => opts.RunInfoAndReturnExitCode(),
                (MigrateOptions       opts) => opts.RunMigrateAndReturnExitCode(opts),
                (RepairOptions        opts) => opts.RunRepairAndReturnExitCode(opts),
-               (ValidateOptions      opts) => opts.RunValidateAndReturnExitCode(opts),
+               (ValidateOptions      opts) => opts.RunValidateAndReturnExitCode(),
            errs => 1);
 
             
