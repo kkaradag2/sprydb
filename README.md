@@ -18,8 +18,7 @@ All available options
 * ORACLE
 * MYSQL
 
-EXAMPLE of USEGE
-This example show you how to configure server type as ORACLE.
+**EXAMPLE** of usage This example show you how to configure server type as ORACLE.
 
 ```
 Sprydb config -s ORACLE
