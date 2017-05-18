@@ -14,9 +14,9 @@ The configuration of SpryDB needs to be done once in order to be able to run. Th
 --server: This option is used to specify the path of the database server being worked on. The default value is MSSQL.
 
 All available options
-*item MSSQL
-*item ORACLE
-*item MYSQL
+* MSSQL
+* ORACLE
+* MYSQL
 
 EXAMPLE of USEGE
 This example show you how to configure server type as ORACLE.
