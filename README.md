@@ -1,7 +1,7 @@
 # Sprydb
 Sprydb is an open-source database migration tool. It strongly favors simplicity and convention over configuration.
 
-##Get Started
+## Get Started
 
 The simple configuration must be completed before you can start using SpryDB. The SpryDB configuration data is saved 
 in the **config.json** file in the installation directory.
